@@ -1,7 +1,13 @@
 packages = Array.new
 
 case node[:lsb][:codename]
-when "lucid", "precise"
+when "lucid"
+  packages |= %w/
+    gawk
+  /
+when "precise"
+  include_recipe "libsigsegv"
+
   packages |= %w/
     gawk
   /
